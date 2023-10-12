@@ -1,5 +1,5 @@
 # I present to you, the WEBMINATOR
-I present to you my latest and greatest invention: the Webminator! With this, I will compress all of the Tri-State Area's short video clips to an unbelievably teensy-weensy size! but no really, This script is designed to compress short video clips (around 1 minute or less) to a target size of 1.9MB or under. It's primary purpose is to make submitting webms to SuperCombo Wiki much easier.
+I present to you my latest and greatest invention: the Webminator! With this, I will compress all of the Tri-State Area's short video clips to an unbelievably teensy-weensy size! But no really, This script is designed to compress short video clips (around 1 minute or less) to a target size of 1.9MB or under. It's primary purpose is to make submitting webms to SuperCombo Wiki much easier.
 
 # Prerequisites
 Ensure you have ffmpeg installed on your system. If not, download and install it from [here](https://ffmpeg.org/download.html). Remember to add it to your system's PATH so the script can access it.
