@@ -44,7 +44,7 @@ REM Compress the video within the specified time frame with optional audio
 set audio_option=-c:a libvorbis
 
 REM Get user input for audio exclusion
-set /p "exclude_audio=Do you want to exclude audio (N/No)? "
+set /p "exclude_audio=Enable audio (Y/N)? "
 
 REM Check user input for audio exclusion
 if /i "%exclude_audio%"=="N" (
