@@ -24,7 +24,7 @@ The script is optimized for short clips of around 1 minute or less. Using it for
 If you encounter any issues or errors during the compression process, the script will pause to display relevant error messages. Review the provided messages for insights into the problem.
 
 # Notes
-
-Working on the ability to specify times and disable audio, coming soon
+* For best results, record on a stage with minimal movement (training mode in most games are optimal)
+* Working on the ability to specify times and disable audio, coming soon
 
 
