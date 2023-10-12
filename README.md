@@ -1,4 +1,4 @@
-# I present to you, the WEBMINATOR
+# I present to you, the WEBM-INATOR
 I present to you my latest and greatest invention: the Webminator! With this, I will compress all of the Tri-State Area's short video clips to an unbelievably teensy-weensy size! But no really, This script is designed to compress short video clips (around 1 minute or less) to a target size of 1.9MB or under. It's primary purpose is to make submitting webms to SuperCombo Wiki much easier.
 
 # Prerequisites
