@@ -21,18 +21,6 @@ REM Set default values if not provided
 if "%start_point%"=="" set "start_point=0"
 if "%end_point%"=="" set "end_point=%total_seconds%"
 
-REM Get user input for audio inclusion
-set /p "include_audio=Do you want to include audio (Y/Yes/N/No)? "
-
-REM Check user input for audio inclusion
-if /i "%include_audio%"=="Y" (
-  set audio_option=-c:a libvorbis
-) else if /i "%include_audio%"=="Yes" (
-  set audio_option=-c:a libvorbis
-) else (
-  set audio_option=-an
-)
-
 REM Calculate the required video bitrate to fit within the target size (2MB)
 set /A required_bitrate=(TARGET_SIZE*8192)/(%end_point%-%start_point%) - 128
 
@@ -53,6 +41,16 @@ set /A "end_milliseconds=milliseconds*end_point%%1000/1000"
 set "end_time=!end_hours!:!end_minutes!:!end_seconds!.!end_milliseconds!"
 
 REM Compress the video within the specified time frame with optional audio
+set audio_option=-c:a libvorbis
+
+REM Get user input for audio exclusion
+set /p "exclude_audio=Do you want to exclude audio (N/No)? "
+
+REM Check user input for audio exclusion
+if /i "%exclude_audio%"=="N" (
+  set audio_option=-an
+)
+
 ffmpeg -ss !start_time! -i "%~1" -to !end_time! -c:v libvpx -b:v %required_bitrate%k %audio_option% -s 640x360 -y -f webm "%~dpn1_compressed.webm"
 
 endlocal
