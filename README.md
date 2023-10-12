@@ -28,6 +28,6 @@ If you encounter any issues or errors during the compression process, the script
 
 # Notes
 * For best results, record on a stage with minimal movement (training mode in most games are optimal)
-
-
+* Shoutouts to Tatsunoko vs. Capcom
+<img src="https://github.com/cce2955/webminator/assets/44739551/4c655b76-a184-4397-a999-f8993afaf1d7" alt="" width="300"/>
 
