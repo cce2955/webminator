@@ -15,11 +15,15 @@ set /A total_seconds=hours*3600 + minutes*60 + seconds
 
 REM Get user input for start and end points in seconds
 set /p "start_point=Enter the starting point in seconds (default is 0): "
-set /p "end_point=Enter the amount of time: (example if your start time is 6 seconds and you want it to end at 13, then you would type 7, this is a temporary fix while I do the logic correctly) "
+set /p "end_point=Enter the ending point in seconds: "
 
 REM Set default values if not provided
 if "%start_point%"=="" set "start_point=0"
 if "%end_point%"=="" set "end_point=%total_seconds%"
+
+REM Calculate the duration in seconds
+set /a "duration_seconds=%end_point% - %start_point%"
+
 
 set audio_option=-c:a libvorbis
 REM Get user input for audio inclusion
@@ -35,7 +39,8 @@ if /i "%include_audio%"=="Y" (
 )
 
 REM Calculate the required video bitrate to fit within the target size (2MB)
-set /A required_bitrate=(TARGET_SIZE*8192)/(%end_point%-%start_point%) - 128
+set /A required_bitrate=(TARGET_SIZE*8192)/(duration_seconds) - 128
+
 
 REM Ensure the bitrate is within a reasonable range (e.g., not exceeding 500k)
 if %required_bitrate% gtr 500 set required_bitrate=500
@@ -54,7 +59,7 @@ set /A "end_milliseconds=milliseconds*end_point%%1000/1000"
 set "end_time=!end_hours!:!end_minutes!:!end_seconds!.!end_milliseconds!"
 
 REM Compress the video within the specified time frame with optional audio
-ffmpeg -ss !start_time! -i "%~1" -to !end_time! -c:v libvpx -b:v %required_bitrate%k %audio_option% -s 640x360 -y -f webm "%~dpn1_compressed.webm"
+ffmpeg -ss !start_time! -i "%~1" -t !duration_seconds! -c:v libvpx -b:v %required_bitrate%k %audio_option% -s 640x360 -y -f webm "%~dpn1_compressed.webm"
 
 echo Compression completed.
 endlocal
